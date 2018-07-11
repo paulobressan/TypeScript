@@ -1,0 +1,15 @@
+{
+    //opções do compilador
+    "compilerOptions": {
+        //Em qual versão var ser compilado o typescript
+        "target": "es6",
+        //A pasta que vai ser gerada depois de compilado
+        "outDir": "app/js",
+        //Quando existir qualquer erro no codigo ts, não vai ser gerado a pasta js
+        "noEmitOnError": true
+    },
+    "include": [
+        //Quais arquivos devem ser compilado
+        "app/ts/**/*"
+    ]
+}
