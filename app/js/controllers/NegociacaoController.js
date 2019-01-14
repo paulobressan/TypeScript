@@ -1,9 +1,13 @@
 class NegociacaoController {
     constructor() {
         this._negociacoes = new Negociacoes();
+        //View para renderizar as negociações
+        this._negociacoesView = new NegociacoesView('#negociacoesView');
         this._inputData = document.querySelector("#data");
         this._inputQuantidade = document.querySelector("#quantidade");
         this._inputValor = document.querySelector("#valor");
+        //Assim que a pagina for carregada, vamos carregar a tebela
+        this._negociacoesView.update();
     }
     //O parametro passado é um evento e para eventos podemos passar o tipo Event
     adiciona(event) {
