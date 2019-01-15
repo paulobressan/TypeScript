@@ -1,6 +1,4 @@
-//Criando uma classe que representa um pedaço de um html que é uma view
 class NegociacoesView extends View {
-    //html que sera retornado para ser renderizado
     template(negociacoes) {
         return `
         <table class="table table-hover table-bordered">
@@ -13,16 +11,14 @@ class NegociacoesView extends View {
                 </tr>
             </thead>
             <tbody>
-            ${
-        //Mapear o array para que seja retornado um array de string, onde cada string é uma linha da tabela, com suas colunas preenchidas
-        negociacoes.paraArray().map(negociacao => `
+            ${negociacoes.paraArray().map(negociacao => `
                     <tr>
                         <td>${negociacao.data.getDate()}/${negociacao.data.getMonth() + 1}/${negociacao.data.getFullYear()}</td>
                         <td>${negociacao.quantidade}</td>
                         <td>${negociacao.valor}</td>
                         <td>${negociacao.volume}</td>
                     </tr>
-                `) /**O join vai pegar o array de string e converter tudo em uma unica string */.join('')}
+                `).join('')}
             </tbody>
             <tfoot>
             </tfoot>

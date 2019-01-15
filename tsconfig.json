@@ -8,7 +8,9 @@
         //Quando existir qualquer erro no codigo ts, não vai ser gerado a pasta js
         "noEmitOnError": true,
         //Ativiar erros em variaveis que não tiver tipo.
-        "noImplicitAny": true
+        "noImplicitAny": true,
+        //remover os comentarios do codigo na compilação do projeto
+        "removeComments": true
     },
     "include": [
         //Quais arquivos devem ser compilado
