@@ -6,13 +6,15 @@ class NegociacaoController {
     private _negociacoes = new Negociacoes();
     //View para renderizar as negociações
     private _negociacoesView = new NegociacoesView('#negociacoesView');
+    //View para renderizar mensagens
+    private _mensagemView = new MensagemView('#mensagemView');
 
     constructor() {
         this._inputData = <HTMLInputElement>document.querySelector("#data");
         this._inputQuantidade = <HTMLInputElement>document.querySelector("#quantidade");
         this._inputValor = <HTMLInputElement>document.querySelector("#valor");
         //Assim que a pagina for carregada, vamos carregar a tebela
-        this._negociacoesView.update();
+        this._negociacoesView.update(this._negociacoes);
     }
 
     //O parametro passado é um evento e para eventos podemos passar o tipo Event
@@ -27,5 +29,9 @@ class NegociacaoController {
 
         this._negociacoes.adiciona(negociacao);
         this._negociacoes.paraArray().forEach(negociacao => console.log(negociacao));
+        //Toda vez que uma negociação for adicionado, vamos atualiza a tabela
+        this._negociacoesView.update(this._negociacoes);
+        //Renderizando uma mensagem
+        this._mensagemView.update('Negociação adicionada com sucesso');
     }
 }
