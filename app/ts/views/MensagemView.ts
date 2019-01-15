@@ -1,11 +1,7 @@
 //Classe responsavel por renderizar mensagens de sucesso
-abstract class MensagemView extends View {
-    update(mensagem: string): void {
-        //Rendereizando a msg com o retorno do metodo template
-        this._elemento.innerHTML = this.template(mensagem);
-    }
-
+class MensagemView extends View<string> {
     //html que sera retornado para ser renderizado
+    //O template é subscrito da View
     template(mensagem: string): string {
         return `
             <p class="alert alert-info">${mensagem}</p>

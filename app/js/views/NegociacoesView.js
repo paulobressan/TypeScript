@@ -1,9 +1,5 @@
 //Criando uma classe que representa um pedaço de um html que é uma view
 class NegociacoesView extends View {
-    //Atualizar a view na pagina
-    update(negociacoes) {
-        this._elemento.innerHTML = this.template(negociacoes);
-    }
     //html que sera retornado para ser renderizado
     template(negociacoes) {
         return `
