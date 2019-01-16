@@ -1,23 +1,19 @@
-//Usando o namespace para empacotar classes
-namespace Views {
-    //Classe abstrata para manipular views
-    //Para que a View seja empacotada no namespace views, temos que exportar a classe View
-    export abstract class View<T> {
-        //Elemento onde vai ser renderizado a mensagem
-        private _elemento: JQuery;
+//Classe abstrata para manipular views
+export abstract class View<T> {
+    //Elemento onde vai ser renderizado a mensagem
+    private _elemento: JQuery;
 
-        constructor(seletor: string) {
-            //Buscando o elemento onde vai ser renderizado a mensagem, atravez do seu seletor
-            this._elemento = $(seletor);
-        }
-
-        update(model: T): void {
-            //Rendereizando a msg com o retorno do metodo template
-            this._elemento.html(this.template(model));
-        }
-
-        //html que sera retornado para ser renderizado
-        //Metodo abstrato onde as classe filhas vão ter que implementalo 
-        abstract template(model: T): string;
+    constructor(seletor: string) {
+        //Buscando o elemento onde vai ser renderizado a mensagem, atravez do seu seletor
+        this._elemento = $(seletor);
     }
+
+    update(model: T): void {
+        //Rendereizando a msg com o retorno do metodo template
+        this._elemento.html(this.template(model));
+    }
+
+    //html que sera retornado para ser renderizado
+    //Metodo abstrato onde as classe filhas vão ter que implementalo 
+    abstract template(model: T): string;
 }

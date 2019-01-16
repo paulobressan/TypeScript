@@ -1,13 +1,19 @@
-class NegociacaoController {
+//Importando classes
+import { Negociacoes } from "../models/Negociacoes";
+import { NegociacoesView } from "../views/NegociacoesView";
+import { MensagemView } from "../views/MensagemView";
+import { Negociacao } from "../models/Negociacao";
+
+export class NegociacaoController {
     //Criando as propriedade para os input, como o input é um elemento as prop tem que ser do tipo HTMLInputElement
     private _inputData: JQuery;
     private _inputQuantidade: JQuery;
     private _inputValor: JQuery;
     private _negociacoes = new Negociacoes();
     //View para renderizar as negociações
-    private _negociacoesView = new Views.NegociacoesView('#negociacoesView');
+    private _negociacoesView = new NegociacoesView('#negociacoesView');
     //View para renderizar mensagens
-    private _mensagemView = new Views.MensagemView('#mensagemView');
+    private _mensagemView = new MensagemView('#mensagemView');
 
     constructor() {
         this._inputData = $("#data");

@@ -1,4 +1,8 @@
-class Negociacoes {
+//Importanto Negociacao
+import { Negociacao } from "./Negociacao";
+
+//Exportando classe Negociacoes
+export class Negociacoes {
     //criando um array de negociações que vai conter objetos do tipo Negociacao
     private _negociacoes: Negociacao[] = [];
 

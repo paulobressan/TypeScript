@@ -1,4 +1,6 @@
-var negociacaoController = new NegociacaoController();
+import { NegociacaoController } from "./controllers/NegociacaoController";
+
+const controller = new NegociacaoController();
 
 //Realizando bind do adiciona no evento submit do formulario
-$('.form').submit(negociacaoController.adiciona.bind(negociacaoController));
+$('.form').submit(controller.adiciona.bind(controller));
