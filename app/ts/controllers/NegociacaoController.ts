@@ -1,8 +1,7 @@
 //Importando classes
-import { Negociacoes } from "../models/Negociacoes";
-import { NegociacoesView } from "../views/NegociacoesView";
-import { MensagemView } from "../views/MensagemView";
-import { Negociacao } from "../models/Negociacao";
+//O index é utilizado como estratégia Barril, ele exporta todos os modulos da pasta views ou models, cada pasta tem o o seu
+import { NegociacoesView, MensagemView } from "../views/index";
+import { Negociacoes, Negociacao } from "../models/index";
 
 export class NegociacaoController {
     //Criando as propriedade para os input, como o input é um elemento as prop tem que ser do tipo HTMLInputElement
