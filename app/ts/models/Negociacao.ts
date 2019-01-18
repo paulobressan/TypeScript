@@ -1,19 +1,8 @@
 export class Negociacao {
-    constructor(private _data: Date, private _quantidade: number, private _valor: number) { }
+    //readonly vai manter a propriedade segura para escritas, somente leitura vai ser realizada externamente
+    constructor(readonly data: Date, readonly quantidade: number, readonly valor: number) { }
 
-    get data() {
-        return new Date(this._data);
-    }
-
-    get quantidade(): number {
-        return this._quantidade;
-    }
-
-    get valor(): number {
-        return this._valor;
-    }
-
-    get volume(): number {
+    get volume(): number { 
         return this.quantidade * this.valor
     }
 }
