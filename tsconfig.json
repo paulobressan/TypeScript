@@ -13,7 +13,9 @@
         "removeComments": true,
         //O system.js que é o sistema de modulos do es6, tem uma sintaxe e para isso vamos configurar
         //o compilador para que ele adicione a sintaxe o do system.js
-        "module": "system"
+        "module": "system",
+        //Para não permitir valores numeros em variaveis, por exemplo uma variavel do tipo boolean
+        "strictNullChecks": true
     },
     "include": [
         //Quais arquivos devem ser compilado

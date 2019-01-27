@@ -5,7 +5,7 @@ export abstract class View<T> {
     //o escapar vai remover qualquer tag script no template
     private _escapar: boolean;
 
-    constructor(seletor: string, escapar?: boolean) {
+    constructor(seletor: string, escapar: boolean = false) {
         //Buscando o elemento onde vai ser renderizado a mensagem, atravez do seu seletor
         this._elemento = $(seletor);
         this._escapar = escapar;

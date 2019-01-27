@@ -13,6 +13,6 @@ export class Negociacoes {
     paraArray(): Negociacao[] {
         //ParaArray retorna um novo array de objetos, isso aplica a programação defenciva, onde quem receber
         //o array de negociações não vai conseguir modificar o array original, somente a copia
-        return [].concat(this._negociacoes);
+        return ([] as Negociacao[]).concat(this._negociacoes);
     }
 } 
