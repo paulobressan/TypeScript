@@ -26,9 +26,17 @@ export class NegociacaoController {
     adiciona(event: Event) {
         event.preventDefault();
 
+        //Limitando negociações para somente serem feitas de segunda a sexta
+        let data = new Date((<string>this._inputData.val()).replace(/-/g, ','));
+        
+        if (!this._ehDiaUtil(data)) {
+            this._mensagemView.update('Não é possivel criar negociações em dias não utel.');
+            return;
+        }
+
         const negociacao = new Negociacao(
             //capturar o valor do input com o jquery
-            new Date((<string>this._inputData.val()).replace(/-/g, ',')),
+            data,
             (<number>this._inputQuantidade.val()),
             (<number>this._inputValor.val())
         );
@@ -39,5 +47,25 @@ export class NegociacaoController {
         this._negociacoesView.update(this._negociacoes);
         //Renderizando uma mensagem
         this._mensagemView.update('Negociação adicionada com sucesso');
+
     }
+
+    //Metodo para validar e uma data esta em um dia util, segunda a sexta.
+    private _ehDiaUtil(data: Date) {
+        //0 = domingo, 6 = sabado
+        return data.getDay() != DiaDaSemana.Domingo && data.getDay() != DiaDaSemana.Sabado;
+    }
+}
+
+//Para deixar o código limpo, podemos criar enumerações. A enumeração é contida por chave e valor, porem quando
+//nós não atribuimos valor a chave por padrão o valor vai ser incremental, por exemplo na frente das chaves abaixo tem o valor de cada chave
+//Portanto quando atribuimos um valor ao enum, por exemplo o domingo for valor 5 a segunda vai ser 6, terça 7 e assim incremental.
+enum DiaDaSemana {
+    Domingo, //0
+    Segunda, //1
+    Terça, //2
+    Quarta, //3
+    Quinta, //4
+    Sexta, //5
+    Sabado //6
 }
