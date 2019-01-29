@@ -15,7 +15,9 @@
         //o compilador para que ele adicione a sintaxe o do system.js
         "module": "system",
         //Para não permitir valores numeros em variaveis, por exemplo uma variavel do tipo boolean
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        //Habilitar o uso de decorators
+        "experimentalDecorators": true
     },
     "include": [
         //Quais arquivos devem ser compilado

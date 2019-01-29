@@ -2,6 +2,7 @@
 //O index é utilizado como estratégia Barril, ele exporta todos os modulos da pasta views ou models, cada pasta tem o o seu
 import { NegociacoesView, MensagemView } from "../views/index";
 import { Negociacoes, Negociacao } from "../models/index";
+import { LogarTempoDeExecucao } from "../helpers/decorators/LogarTempoDeExecucao";
 
 export class NegociacaoController {
     //Criando as propriedade para os input, como o input é um elemento as prop tem que ser do tipo HTMLInputElement
@@ -23,6 +24,8 @@ export class NegociacaoController {
     }
 
     //O parametro passado é um evento e para eventos podemos passar o tipo Event
+    //Decorator
+    @LogarTempoDeExecucao()
     adiciona(event: Event) {
         event.preventDefault();
 
