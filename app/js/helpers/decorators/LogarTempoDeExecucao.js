@@ -1,11 +1,11 @@
 System.register([], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    function LogarTempoDeExecucao() {
+    function LogarTempoDeExecucao(logar = '') {
         return function (target, propertyKey, descriptor) {
-            console.log("teste");
             const metodoOriginal = descriptor.value;
             descriptor.value = function (...args) {
+                console.log(logar);
                 const retorno = metodoOriginal.apply(this, args);
                 return retorno;
             };

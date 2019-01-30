@@ -49,7 +49,7 @@ System.register(["../views/index", "../models/index", "../helpers/decorators/Log
                 }
             };
             __decorate([
-                LogarTempoDeExecucao_1.LogarTempoDeExecucao()
+                LogarTempoDeExecucao_1.LogarTempoDeExecucao('ola')
             ], NegociacaoController.prototype, "adiciona", null);
             exports_1("NegociacaoController", NegociacaoController);
             (function (DiaDaSemana) {

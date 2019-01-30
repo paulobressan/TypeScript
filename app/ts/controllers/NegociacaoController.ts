@@ -25,7 +25,7 @@ export class NegociacaoController {
 
     //O parametro passado é um evento e para eventos podemos passar o tipo Event
     //Decorator
-    @LogarTempoDeExecucao()
+    @LogarTempoDeExecucao('ola')
     adiciona(event: Event) {
         event.preventDefault();
 
