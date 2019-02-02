@@ -1,8 +1,7 @@
 //Importando classes
 //O index é utilizado como estratégia Barril, ele exporta todos os modulos da pasta views ou models, cada pasta tem o o seu
 import { NegociacoesView, MensagemView } from "../views/index";
-import { Negociacoes, Negociacao } from "../models/index";
-import { LogarTempoDeExecucao } from "../helpers/decorators/LogarTempoDeExecucao";
+import { Negociacoes, Negociacao, NegociacaoParcial } from "../models/index";
 import { DomInject } from '../helpers/decorators/index';
 
 export class NegociacaoController {
@@ -78,7 +77,7 @@ export class NegociacaoController {
         fetch('http://localhost:8080/dados')
             .then(res => isOk(res))
             .then(res => res.json())
-            .then((dados: any[]) => {
+            .then((dados: NegociacaoParcial[]) => {
                 dados
                     .map(dado => new Negociacao(new Date(), dado.vezes, dado.montante))
                     .forEach(negociacao => this._negociacoes.adiciona(negociacao));
