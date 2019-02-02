@@ -1,3 +1,5 @@
+import { LogarTempoDeExecucao } from '../helpers/decorators/index';
+
 //Classe abstrata para manipular views
 export abstract class View<T> {
     //Elemento onde vai ser renderizado a mensagem
@@ -11,6 +13,8 @@ export abstract class View<T> {
         this._escapar = escapar;
     }
     
+    //Decorator
+    @LogarTempoDeExecucao(true)
     update(model: T): void {
         let template = this.template(model);
         if (this._escapar)

@@ -3,11 +3,17 @@
 import { NegociacoesView, MensagemView } from "../views/index";
 import { Negociacoes, Negociacao } from "../models/index";
 import { LogarTempoDeExecucao } from "../helpers/decorators/LogarTempoDeExecucao";
+import { DomInject } from '../helpers/decorators/index';
 
 export class NegociacaoController {
     //Criando as propriedade para os input, como o input é um elemento as prop tem que ser do tipo HTMLInputElement
+    
+    //Decorator para injetar os elementos quando alguem chamar o elemento
+    @DomInject('#data')
     private _inputData: JQuery;
+    @DomInject('#quantidade')
     private _inputQuantidade: JQuery;
+    @DomInject('#valor')
     private _inputValor: JQuery;
     private _negociacoes = new Negociacoes();
     //View para renderizar as negociações
@@ -16,16 +22,11 @@ export class NegociacaoController {
     private _mensagemView = new MensagemView('#mensagemView');
 
     constructor() {
-        this._inputData = $("#data");
-        this._inputQuantidade = $("#quantidade");
-        this._inputValor = $("#valor");
         //Assim que a pagina for carregada, vamos carregar a tebela
         this._negociacoesView.update(this._negociacoes);
     }
 
     //O parametro passado é um evento e para eventos podemos passar o tipo Event
-    //Decorator
-    @LogarTempoDeExecucao('ola')
     adiciona(event: Event) {
         event.preventDefault();
 
