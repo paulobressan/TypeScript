@@ -1,4 +1,4 @@
-System.register(["./DomInject", "./LogarTempoDeExecucao"], function (exports_1, context_1) {
+System.register(["./DomInject", "./LogarTempoDeExecucao", "./ClassDecorator"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function exportStar_1(m) {
@@ -15,6 +15,9 @@ System.register(["./DomInject", "./LogarTempoDeExecucao"], function (exports_1, 
             },
             function (LogarTempoDeExecucao_1_1) {
                 exportStar_1(LogarTempoDeExecucao_1_1);
+            },
+            function (ClassDecorator_1_1) {
+                exportStar_1(ClassDecorator_1_1);
             }
         ],
         execute: function () {
