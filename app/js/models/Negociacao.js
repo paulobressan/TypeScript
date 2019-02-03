@@ -24,6 +24,12 @@ System.register(["../helpers/decorators/index"], function (exports_1, context_1)
                 get volume() {
                     return this.quantidade * this.valor;
                 }
+                paratTexto() {
+                    console.log(`Data: ${this.data}
+                     Quantidade: ${this.quantidade}
+                     Valor: ${this.valor}
+                     Volume: ${this.volume}`);
+                }
             };
             Negociacao = __decorate([
                 index_1.ClassDecorator("Decorator para a classe negociação")
@@ -32,3 +38,4 @@ System.register(["../helpers/decorators/index"], function (exports_1, context_1)
         }
     };
 });
+//# sourceMappingURL=Negociacao.js.map

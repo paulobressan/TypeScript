@@ -1,4 +1,4 @@
-System.register(["./DomInject", "./LogarTempoDeExecucao", "./ClassDecorator"], function (exports_1, context_1) {
+System.register(["./DomInject", "./LogarTempoDeExecucao", "./ClassDecorator", "./Throttle"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function exportStar_1(m) {
@@ -18,9 +18,13 @@ System.register(["./DomInject", "./LogarTempoDeExecucao", "./ClassDecorator"], f
             },
             function (ClassDecorator_1_1) {
                 exportStar_1(ClassDecorator_1_1);
+            },
+            function (Throttle_1_1) {
+                exportStar_1(Throttle_1_1);
             }
         ],
         execute: function () {
         }
     };
 });
+//# sourceMappingURL=index.js.map

@@ -17,7 +17,8 @@
         //Para não permitir valores numeros em variaveis, por exemplo uma variavel do tipo boolean
         "strictNullChecks": true,
         //Habilitar o uso de decorators
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "sourceMap": true
     },
     "include": [
         //Quais arquivos devem ser compilado

@@ -20,3 +20,4 @@ System.register(["./View"], function (exports_1, context_1) {
         }
     };
 });
+//# sourceMappingURL=MensagemView.js.map

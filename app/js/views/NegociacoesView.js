@@ -41,3 +41,4 @@ System.register(["./View"], function (exports_1, context_1) {
         }
     };
 });
+//# sourceMappingURL=NegociacoesView.js.map

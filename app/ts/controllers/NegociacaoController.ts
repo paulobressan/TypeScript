@@ -2,7 +2,8 @@
 //O index é utilizado como estratégia Barril, ele exporta todos os modulos da pasta views ou models, cada pasta tem o o seu
 import { NegociacoesView, MensagemView } from "../views/index";
 import { Negociacoes, Negociacao, NegociacaoParcial } from "../models/index";
-import { DomInject } from '../helpers/decorators/index';
+import { DomInject, Throttle } from '../helpers/decorators/index';
+import { NegociacaoService, HandlerFunction } from '../services/index';
 
 export class NegociacaoController {
     //Criando as propriedade para os input, como o input é um elemento as prop tem que ser do tipo HTMLInputElement
@@ -14,6 +15,8 @@ export class NegociacaoController {
     private _inputQuantidade: JQuery;
     @DomInject('#valor')
     private _inputValor: JQuery;
+
+    private _negociacaoService = new NegociacaoService();
     private _negociacoes = new Negociacoes();
     //View para renderizar as negociações
     private _negociacoesView = new NegociacoesView('#negociacoesView');
@@ -25,10 +28,8 @@ export class NegociacaoController {
         this._negociacoesView.update(this._negociacoes);
     }
 
-    //O parametro passado é um evento e para eventos podemos passar o tipo Event
-    adiciona(event: Event) {
-        event.preventDefault();
-
+    @Throttle()
+    adiciona() {
         //Limitando negociações para somente serem feitas de segunda a sexta
         let data = new Date((<string>this._inputData.val()).replace(/-/g, ','));
 
@@ -44,8 +45,9 @@ export class NegociacaoController {
             (<number>this._inputValor.val())
         );
 
+        //Logar negociações
+        negociacao.paratTexto();
         this._negociacoes.adiciona(negociacao);
-        this._negociacoes.paraArray().forEach(negociacao => console.log(negociacao));
         //Toda vez que uma negociação for adicionado, vamos atualiza a tabela
         this._negociacoesView.update(this._negociacoes);
         //Renderizando uma mensagem
@@ -61,29 +63,25 @@ export class NegociacaoController {
 
     /**
      * Essa função vai importar dados para o front atraves de um requisição para o servidor
+     * O Decorator throttler vai aguardar por padrão 500 milesegundos para executar o metodo importaDados
      */
+    @Throttle()
     importaDados() {
         //Função para tratar erro
-        function isOk(res: Response) {
+        const isOk: HandlerFunction = (res: Response) => {
             if (res.ok) {
                 return (<any>res);
             } else {
                 return new Error(res.statusText);
             }
         }
-        /**
-         * O fetch é uma função do javascript que realiza requisições, ele é uma evolução do XMLHttpResquest e pode ser usado com promise
-         */
-        fetch('http://localhost:8080/dados')
-            .then(res => isOk(res))
-            .then(res => res.json())
-            .then((dados: NegociacaoParcial[]) => {
-                dados
-                    .map(dado => new Negociacao(new Date(), dado.vezes, dado.montante))
-                    .forEach(negociacao => this._negociacoes.adiciona(negociacao));
+
+        this._negociacaoService.obterNegociacoes(isOk)
+            .then(negociacoes => negociacoes.forEach(negociacao => {
+                this._negociacoes.adiciona(negociacao);
                 this._negociacoesView.update(this._negociacoes);
-            })
-            .catch(err => console.log(err));
+            }))
+            .catch(err => console.log(err))
     }
 }
 

@@ -24,3 +24,4 @@ System.register(["./View", "./MensagemView", "./NegociacoesView"], function (exp
         }
     };
 });
+//# sourceMappingURL=index.js.map
