@@ -15,4 +15,8 @@ export class Negociacoes {
         //o array de negociações não vai conseguir modificar o array original, somente a copia
         return ([] as Negociacao[]).concat(this._negociacoes);
     }
+
+    paraTexto(): void{
+        console.log(JSON.stringify(this._negociacoes));
+    }
 } 

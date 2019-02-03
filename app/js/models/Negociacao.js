@@ -24,7 +24,7 @@ System.register(["../helpers/decorators/index"], function (exports_1, context_1)
                 get volume() {
                     return this.quantidade * this.valor;
                 }
-                paratTexto() {
+                paraTexto() {
                     console.log(`Data: ${this.data}
                      Quantidade: ${this.quantidade}
                      Valor: ${this.valor}

@@ -4,6 +4,7 @@ import { NegociacoesView, MensagemView } from "../views/index";
 import { Negociacoes, Negociacao, NegociacaoParcial } from "../models/index";
 import { DomInject, Throttle } from '../helpers/decorators/index';
 import { NegociacaoService, HandlerFunction } from '../services/index';
+import { imprime } from '../helpers/index';
 
 export class NegociacaoController {
     //Criando as propriedade para os input, como o input é um elemento as prop tem que ser do tipo HTMLInputElement
@@ -45,9 +46,9 @@ export class NegociacaoController {
             (<number>this._inputValor.val())
         );
 
-        //Logar negociações
-        negociacao.paratTexto();
         this._negociacoes.adiciona(negociacao);
+        //Logar negociações
+        imprime(negociacao, this._negociacoes);
         //Toda vez que uma negociação for adicionado, vamos atualiza a tabela
         this._negociacoesView.update(this._negociacoes);
         //Renderizando uma mensagem

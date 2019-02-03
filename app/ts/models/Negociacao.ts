@@ -9,7 +9,7 @@ export class Negociacao {
         return this.quantidade * this.valor
     }
 
-    paratTexto(): void {
+    paraTexto(): void {
         console.log(`Data: ${this.data}
                      Quantidade: ${this.quantidade}
                      Valor: ${this.valor}
