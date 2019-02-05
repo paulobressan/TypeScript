@@ -3,7 +3,7 @@ import { Negociacao } from "./Negociacao";
 import { Imprimivel } from "./Imprimivel";
 
 //Exportando classe Negociacoes
-export class Negociacoes extends Imprimivel {
+export class Negociacoes implements Imprimivel {
     //criando um array de negociações que vai conter objetos do tipo Negociacao
     private _negociacoes: Negociacao[] = [];
 

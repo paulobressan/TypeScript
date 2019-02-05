@@ -2,11 +2,9 @@ import { ClassDecorator } from '../helpers/decorators/index';
 import { Imprimivel } from './Imprimivel';
 
 @ClassDecorator("Decorator para a classe negociação")
-export class Negociacao extends Imprimivel {
+export class Negociacao implements Imprimivel {
     //readonly vai manter a propriedade segura para escritas, somente leitura vai ser realizada externamente
-    constructor(readonly data: Date, readonly quantidade: number, readonly valor: number) {
-        super();
-    }
+    constructor(readonly data: Date, readonly quantidade: number, readonly valor: number) { }
 
     get volume(): number {
         return this.quantidade * this.valor
