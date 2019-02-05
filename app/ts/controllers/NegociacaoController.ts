@@ -67,28 +67,32 @@ export class NegociacaoController {
      * O Decorator throttler vai aguardar por padrão 500 milesegundos para executar o metodo importaDados
      */
     @Throttle()
-    importaDados() {
-        //Função para tratar erro
-        const isOk: HandlerFunction = (res: Response) => {
-            if (res.ok) {
-                return (<any>res);
-            } else {
-                return new Error(res.statusText);
+    //Recurso de codigo assincrono do ES8
+    async importaDados() {
+        try {
+
+            const isOk: HandlerFunction = (res: Response) => {
+                if (res.ok) {
+                    return (<any>res);
+                } else {
+                    return new Error(res.statusText);
+                }
             }
+
+            //Utilizando o novo recurso do ES8
+            const negociacoesParaImportar = await this._negociacaoService.obterNegociacoes(isOk);
+            const negociacoes = this._negociacoes.paraArray();
+            negociacoesParaImportar.filter(negociacao =>
+                !negociacoesParaImportar.some(jaImportada => negociacao.ehIgual(jaImportada)));
+
+            negociacoesParaImportar.forEach(negociacao => {
+                this._negociacoes.adiciona(negociacao);
+                this._negociacoesView.update(this._negociacoes);
+            });
+        } catch (err) {
+            this._mensagemView.update(err);
         }
-
-        this._negociacaoService.obterNegociacoes(isOk)
-            .then(negociacoesParaImportar => {
-                const negociacoes = this._negociacoes.paraArray();
-                negociacoesParaImportar.filter(negociacao =>
-                    !negociacoesParaImportar.some(jaImportada => negociacao.ehIgual(jaImportada)));
-
-                negociacoesParaImportar.forEach(negociacao => {
-                    this._negociacoes.adiciona(negociacao);
-                    this._negociacoesView.update(this._negociacoes);
-                });
-            })
-            .catch(err => this._mensagemView.update(err));
+        //Função para tratar erro
     }
 }
 
