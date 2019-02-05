@@ -88,7 +88,7 @@ export class NegociacaoController {
                     this._negociacoesView.update(this._negociacoes);
                 });
             })
-            .catch(err => console.log(err))
+            .catch(err => this._mensagemView.update(err));
     }
 }
 

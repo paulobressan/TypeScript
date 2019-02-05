@@ -68,7 +68,7 @@ System.register(["../views/index", "../models/index", "../helpers/decorators/ind
                             this._negociacoesView.update(this._negociacoes);
                         });
                     })
-                        .catch(err => console.log(err));
+                        .catch(err => this._mensagemView.update(err));
                 }
             };
             __decorate([
