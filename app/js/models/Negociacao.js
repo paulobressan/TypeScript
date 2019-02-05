@@ -30,6 +30,11 @@ System.register(["../helpers/decorators/index"], function (exports_1, context_1)
                      Valor: ${this.valor}
                      Volume: ${this.volume}`);
                 }
+                ehIgual(objeto) {
+                    return this.data.getDate() == objeto.data.getDate()
+                        && this.data.getMonth() == objeto.data.getMonth()
+                        && this.data.getFullYear() == objeto.data.getFullYear();
+                }
             };
             Negociacao = __decorate([
                 index_1.ClassDecorator("Decorator para a classe negociação")
