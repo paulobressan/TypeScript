@@ -1,10 +1,9 @@
 //Importanto Negociacao
 import { Negociacao } from "./Negociacao";
-import { Imprimivel } from "./Imprimivel";
-import { Igualavel } from "./Igualavel";
+import { MeuObjeto } from "./MeuObjeto";
 
 //Exportando classe Negociacoes
-export class Negociacoes implements Imprimivel, Igualavel<Negociacoes> {
+export class Negociacoes implements MeuObjeto<Negociacoes> {
     //criando um array de negociações que vai conter objetos do tipo Negociacao
     private _negociacoes: Negociacao[] = [];
 
