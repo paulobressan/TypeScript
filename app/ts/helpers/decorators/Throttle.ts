@@ -7,6 +7,7 @@
 */
 export function Throttle(milessegundos = 500) {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+        if (event) event.preventDefault();
         let metodoOriginal = descriptor.value;
         //Tempo da ultima função executada
         let timer = 0;

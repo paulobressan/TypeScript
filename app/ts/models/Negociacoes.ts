@@ -1,8 +1,9 @@
 //Importanto Negociacao
 import { Negociacao } from "./Negociacao";
+import { Imprimivel } from "./Imprimivel";
 
 //Exportando classe Negociacoes
-export class Negociacoes {
+export class Negociacoes extends Imprimivel {
     //criando um array de negociações que vai conter objetos do tipo Negociacao
     private _negociacoes: Negociacao[] = [];
 
@@ -16,7 +17,7 @@ export class Negociacoes {
         return ([] as Negociacao[]).concat(this._negociacoes);
     }
 
-    paraTexto(): void{
+    paraTexto(): void {
         console.log(JSON.stringify(this._negociacoes));
     }
 } 
